@@ -58,6 +58,10 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   /// 动画曲线
   final Curve? curve;
+
+  /// 更新背景颜色
+  final Function()? animationCallback;
+  final AnimationController controller1;
   SliverHeaderAutomaticDelegate(
       {this.controller,
       this.collapsedWidget,
@@ -66,6 +70,8 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       this.defaultCollapsedTitle,
       this.defaultCollapsedColor,
       this.updateBackgroundColor,
+      this.animationCallback,
+      required this.controller1,
       this.curve = Curves.ease,
       this.durationAnimation = const Duration(milliseconds: 300),
       required this.collapsedHeight,
@@ -110,8 +116,9 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   void _updateStatusBarBrightness(shrinkOffset) {
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
+        controller1.reverse();
         controller?.animateTo(0,
-            duration: durationAnimation, curve: Curves.ease);
+            duration: durationAnimation, curve: curve ?? Curves.easeInOut);
       });
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
@@ -119,12 +126,16 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       ));
     } else if (shrinkOffset > maxExtent / 2 &&
         shrinkOffset <= maxExtent - (minExtent)) {
+      print(
+          "max=$maxExtent ***************shrinkOffset+minExtent=${shrinkOffset + minExtent}");
       debouncer.run(() {
-        if ((shrinkOffset + minExtent) >= maxExtent) {
+        if ((shrinkOffset + minExtent + 20) >= maxExtent) {
+          controller1.forward();
           return;
         }
         controller?.animateTo(maxExtent - (minExtent),
-            duration: durationAnimation, curve: Curves.ease);
+            duration: durationAnimation, curve: curve ?? Curves.easeInOut);
+        //animationCallback?.call();
       });
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         // statusBarBrightness: Brightness.light,

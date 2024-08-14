@@ -78,10 +78,28 @@ class SliverAdsorption extends StatefulWidget {
   State<SliverAdsorption> createState() => _SliverAdsorptionState();
 }
 
-class _SliverAdsorptionState extends State<SliverAdsorption> {
+class _SliverAdsorptionState extends State<SliverAdsorption>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _animation = Tween<Offset>(
+      begin: const Offset(0, -2), // 控制动画起始位置 (屏幕下方)
+      end: const Offset(0, 0), // 控制动画结束位置 (屏幕中间)
+    ).animate(CurvedAnimation(
+        parent: _controller, curve: widget.curve ?? Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -95,7 +113,14 @@ class _SliverAdsorptionState extends State<SliverAdsorption> {
           delegate: SliverHeaderAutomaticDelegate(
             controller: widget.controller,
             collapsedHeight: widget.collapsedHeight,
-            collapsedWidget: widget.collapsedWidget,
+            controller1: _controller,
+            animationCallback: () {
+              _controller.forward().then((e) {
+                print("成功执行");
+              });
+            },
+            collapsedWidget: SlideTransition(
+                position: _animation, child: widget.collapsedWidget),
             expandedHeight: widget.expandedHeight,
             paddingTop: widget.paddingTop ?? MediaQuery.of(context).padding.top,
             defaultCollapsedColor: widget.defaultCollapsedColor,

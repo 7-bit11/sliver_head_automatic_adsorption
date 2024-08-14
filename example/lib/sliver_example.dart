@@ -17,9 +17,9 @@ class _SliverExampleState extends State<SliverExample> {
         body: SliverAdsorption(
             controller: controller,
             collapsedColors: Colors.white,
-            collapsedHeight: 100,
+            collapsedHeight: 90,
             expandedWidget: Container(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               color: Colors.white,
               child: ListView(
                 children: [
