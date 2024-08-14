@@ -52,6 +52,12 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   /// 动画执行时间
   /// 默认 300ms
   late Duration durationAnimation;
+
+  /// 更新背景颜色
+  late Function(Color)? updateBackgroundColor;
+
+  /// 动画曲线
+  final Curve? curve;
   SliverHeaderAutomaticDelegate(
       {this.controller,
       this.collapsedWidget,
@@ -59,6 +65,8 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       this.expandedColors,
       this.defaultCollapsedTitle,
       this.defaultCollapsedColor,
+      this.updateBackgroundColor,
+      this.curve = Curves.ease,
       this.durationAnimation = const Duration(milliseconds: 300),
       required this.collapsedHeight,
       required this.expandedHeight,
@@ -84,8 +92,10 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   ///默认折叠组件
   Widget _defaultCollapsedWidget(dynamic shrinkOffset) {
-    return Center(
-      child: Text(
+    return AppBar(
+      backgroundColor: _makeStickyHeaderBgColor(shrinkOffset),
+      surfaceTintColor: _makeStickyHeaderBgColor(shrinkOffset),
+      title: Text(
         defaultCollapsedTitle ?? "Appbar",
         style: TextStyle(
           fontSize: 20,
@@ -98,8 +108,6 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   /// 更新状态栏
   void _updateStatusBarBrightness(shrinkOffset) {
-    print(shrinkOffset);
-
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
         controller?.animateTo(0,
@@ -162,6 +170,9 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     _updateStatusBarBrightness(shrinkOffset);
+    if (updateBackgroundColor != null) {
+      updateBackgroundColor!(_makeStickyHeaderBgColor(shrinkOffset));
+    }
     return Container(
       color: _makeStickyHeaderBgColor(shrinkOffset),
       height: maxExtent,
