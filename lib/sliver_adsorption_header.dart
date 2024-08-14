@@ -18,7 +18,7 @@ class DebouncedSearch {
 }
 
 /// 自定义顶部滑动
-class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
+class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   /// 折叠高度
   final double collapsedHeight;
 
@@ -52,7 +52,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
   /// 动画执行时间
   /// 默认 300ms
   late Duration durationAnimation;
-  SliverCustomHeaderDelegate(
+  SliverHeaderAutomaticDelegate(
       {this.controller,
       this.collapsedWidget,
       this.collapsedColors,
@@ -98,6 +98,8 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   /// 更新状态栏
   void _updateStatusBarBrightness(shrinkOffset) {
+    print(shrinkOffset);
+
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
         controller?.animateTo(0,
@@ -110,6 +112,9 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
     } else if (shrinkOffset > maxExtent / 2 &&
         shrinkOffset <= maxExtent - (paddingTop * 2.5)) {
       debouncer.run(() {
+        if ((shrinkOffset + paddingTop * 3) >= maxExtent) {
+          return;
+        }
         controller?.animateTo(maxExtent - (paddingTop * 2.5),
             duration: durationAnimation, curve: Curves.ease);
       });

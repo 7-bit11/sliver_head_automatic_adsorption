@@ -18,7 +18,8 @@ class _SliverExampleState extends State<SliverExample> {
       slivers: [
         SliverPersistentHeader(
           pinned: true,
-          delegate: SliverCustomHeaderDelegate(
+          floating: false,
+          delegate: SliverHeaderAutomaticDelegate(
             controller: controller,
             collapsedHeight: 60,
             expandedHeight: 500,
