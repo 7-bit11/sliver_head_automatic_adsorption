@@ -113,12 +113,7 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
           delegate: SliverHeaderAutomaticDelegate(
             controller: widget.controller,
             collapsedHeight: widget.collapsedHeight,
-            controller1: _controller,
-            animationCallback: () {
-              _controller.forward().then((e) {
-                print("成功执行");
-              });
-            },
+            animationController: _controller,
             collapsedWidget: SlideTransition(
                 position: _animation, child: widget.collapsedWidget),
             expandedHeight: widget.expandedHeight,

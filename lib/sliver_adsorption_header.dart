@@ -59,9 +59,8 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   /// 动画曲线
   final Curve? curve;
 
-  /// 更新背景颜色
-  final Function()? animationCallback;
-  final AnimationController controller1;
+  /// 动画控制器
+  final AnimationController animationController;
   SliverHeaderAutomaticDelegate(
       {this.controller,
       this.collapsedWidget,
@@ -70,8 +69,7 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       this.defaultCollapsedTitle,
       this.defaultCollapsedColor,
       this.updateBackgroundColor,
-      this.animationCallback,
-      required this.controller1,
+      required this.animationController,
       this.curve = Curves.ease,
       this.durationAnimation = const Duration(milliseconds: 300),
       required this.collapsedHeight,
@@ -116,7 +114,7 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   void _updateStatusBarBrightness(shrinkOffset) {
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
-        controller1.reverse();
+        animationController.reverse();
         controller?.animateTo(0,
             duration: durationAnimation, curve: curve ?? Curves.easeInOut);
       });
@@ -130,12 +128,11 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
           "max=$maxExtent ***************shrinkOffset+minExtent=${shrinkOffset + minExtent}");
       debouncer.run(() {
         if ((shrinkOffset + minExtent + 20) >= maxExtent) {
-          controller1.forward();
+          animationController.forward();
           return;
         }
         controller?.animateTo(maxExtent - (minExtent),
             duration: durationAnimation, curve: curve ?? Curves.easeInOut);
-        //animationCallback?.call();
       });
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         // statusBarBrightness: Brightness.light,
