@@ -1,33 +1,15 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:sliver_head_automatic_adsorption/sliver_adsorption_header.dart';
 
 class SliverAdsorption extends StatefulWidget {
-  SliverAdsorption({
-    super.key,
-    this.slivers,
-    this.pinned = true,
-    this.expandedColors,
-    this.collapsedColors,
-    this.defaultCollapsedTitle,
-    this.defaultCollapsedColor = Colors.black,
-    this.collapsedWidget,
-    this.paddingTop,
-    this.curve,
-    this.collapsedHeight = 60,
-    this.expandedHeight = 400,
-    this.updateBackgroundColor,
-    this.durationAnimation = const Duration(milliseconds: 300),
-    required this.controller,
-    required this.expandedWidget,
-  });
-
   /// 滚动控制器
   final ScrollController controller;
 
   /// 列表
-  final List<SliverMultiBoxAdaptorWidget>? slivers;
+  final List<Widget> slivers;
 
   /// 是否固定
   final bool pinned;
@@ -68,11 +50,40 @@ class SliverAdsorption extends StatefulWidget {
 
   /// 动画曲线
   final Curve? curve;
+
+  SliverAdsorption({
+    super.key,
+    this.pinned = true,
+    this.expandedColors,
+    this.collapsedColors,
+    this.defaultCollapsedTitle,
+    this.defaultCollapsedColor = Colors.black,
+    this.collapsedWidget,
+    this.paddingTop,
+    this.curve,
+    this.collapsedHeight = 60,
+    this.expandedHeight = 400,
+    this.updateBackgroundColor,
+    this.durationAnimation = const Duration(milliseconds: 300),
+    required this.controller,
+    required this.slivers,
+    required this.expandedWidget,
+  }) : assert(
+            slivers.every((widget) =>
+                widget is RenderObjectWidget ||
+                slivers.every((widget) => widget is RenderSliver) ||
+                slivers.every((widget) => widget is SliverConstraints)),
+            'slivers list child must be a of RenderObjectWidgets||RenderSliver||SliverConstraints ');
   @override
   State<SliverAdsorption> createState() => _SliverAdsorptionState();
 }
 
 class _SliverAdsorptionState extends State<SliverAdsorption> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -91,7 +102,7 @@ class _SliverAdsorptionState extends State<SliverAdsorption> {
             expandedWidget: widget.expandedWidget,
           ),
         ),
-        for (var sliver in widget.slivers ?? []) sliver,
+        for (var sliver in widget.slivers) sliver,
       ],
     );
   }
