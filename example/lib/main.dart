@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sliver_head_automatic_adsorption_example/sliver_example.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,15 +22,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
-      ),
-    );
+    return const MaterialApp(home: SliverExample());
   }
 }
