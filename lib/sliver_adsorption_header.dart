@@ -102,7 +102,7 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       title: Text(
         defaultCollapsedTitle ?? "Appbar",
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 10,
           fontWeight: FontWeight.w500,
           color: _makeStickyHeaderTextColor(shrinkOffset, true),
         ),
@@ -112,6 +112,8 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   /// 更新状态栏
   void _updateStatusBarBrightness(shrinkOffset) {
+    print(
+        "max=$maxExtent ***************shrinkOffset+minExtent=${shrinkOffset + minExtent}");
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
         animationController.reverse();
@@ -124,8 +126,6 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       ));
     } else if (shrinkOffset > maxExtent / 2 &&
         shrinkOffset <= maxExtent - (minExtent)) {
-      print(
-          "max=$maxExtent ***************shrinkOffset+minExtent=${shrinkOffset + minExtent}");
       debouncer.run(() {
         if ((shrinkOffset + minExtent + 20) >= maxExtent) {
           animationController.forward();

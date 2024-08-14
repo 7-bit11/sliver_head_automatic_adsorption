@@ -81,7 +81,7 @@ class SliverAdsorption extends StatefulWidget {
 class _SliverAdsorptionState extends State<SliverAdsorption>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Offset> _animation;
+  late Animation<dynamic> _animation;
   @override
   void initState() {
     super.initState();
@@ -115,7 +115,8 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
             collapsedHeight: widget.collapsedHeight,
             animationController: _controller,
             collapsedWidget: SlideTransition(
-                position: _animation, child: widget.collapsedWidget),
+                position: _animation as Animation<Offset>,
+                child: widget.collapsedWidget),
             expandedHeight: widget.expandedHeight,
             paddingTop: widget.paddingTop ?? MediaQuery.of(context).padding.top,
             defaultCollapsedColor: widget.defaultCollapsedColor,
