@@ -95,9 +95,11 @@ class _SliverAdsorptionState extends State<SliverAdsorption> {
           delegate: SliverHeaderAutomaticDelegate(
             controller: widget.controller,
             collapsedHeight: widget.collapsedHeight,
+            collapsedWidget: widget.collapsedWidget,
             expandedHeight: widget.expandedHeight,
             paddingTop: widget.paddingTop ?? MediaQuery.of(context).padding.top,
             defaultCollapsedColor: widget.defaultCollapsedColor,
+            collapsedColors: widget.collapsedColors,
             updateBackgroundColor: widget.updateBackgroundColor,
             expandedWidget: widget.expandedWidget,
           ),

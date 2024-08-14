@@ -118,17 +118,19 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
         statusBarIconBrightness: Brightness.dark,
       ));
     } else if (shrinkOffset > maxExtent / 2 &&
-        shrinkOffset <= maxExtent - (paddingTop * 2.5)) {
+        shrinkOffset <= maxExtent - (minExtent)) {
       debouncer.run(() {
-        if ((shrinkOffset + paddingTop * 3) >= maxExtent) {
+        if ((shrinkOffset + minExtent) >= maxExtent) {
           return;
         }
-        controller?.animateTo(maxExtent - (paddingTop * 2.5),
+        controller?.animateTo(maxExtent - (minExtent),
             duration: durationAnimation, curve: Curves.ease);
       });
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
+        // statusBarBrightness: Brightness.light,
+        // statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
       ));
     }
   }
