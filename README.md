@@ -4,5 +4,5 @@
 
 ## 开始
  
-![上往下出现动画]<img src="./README/images/dtu.gif" ,width = 200 height = 300>  
-![左往右出现动画]<img src="./README/images/ltr.gif",width = 200 height = 300> 
+![上往下出现动画](./README/images/dtu.gif#pic_center =128x128) 
+![左往右出现动画](./README/images/ltr.gif) 
