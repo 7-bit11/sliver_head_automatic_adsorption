@@ -104,6 +104,11 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
   _initAnimation(AnimationEnum aEnum) {
     switch (aEnum) {
       case AnimationEnum.fadeIn:
+        _animation = Tween<double>(
+          begin: 0, // 透明度开始0
+          end: 1, // 控制透明度结束
+        ).animate(CurvedAnimation(
+            parent: _controller, curve: widget.curve ?? Curves.easeInOut));
         return;
       case AnimationEnum.upToDown:
         _animation = Tween<Offset>(
@@ -121,7 +126,9 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
   Widget? _getAnimationWidget() {
     switch (widget.animationEnum) {
       case AnimationEnum.fadeIn:
-        return null;
+        return FadeTransition(
+            opacity: _animation as Animation<double>,
+            child: widget.collapsedWidget);
       case AnimationEnum.upToDown:
         return SlideTransition(
             position: _animation as Animation<Offset>,
