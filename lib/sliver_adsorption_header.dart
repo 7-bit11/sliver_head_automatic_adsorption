@@ -100,8 +100,7 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
   ///防抖
   /// 防抖动，防止多次触发
   /// 100ms内只触发一次
-  final debouncer =
-      DebouncedSearch(duration: const Duration(milliseconds: 100));
+  final debouncer = DebouncedSearch(duration: const Duration(milliseconds: 80));
 
   ///默认折叠组件
   Widget _defaultCollapsedWidget(dynamic shrinkOffset) {
@@ -121,17 +120,15 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   /// 更新状态栏
   void _updateStatusBarBrightness(shrinkOffset) {
-    print(
-        "max=$maxExtent ***************shrinkOffset+minExtent=${shrinkOffset + minExtent}");
     if (shrinkOffset <= maxExtent / 2) {
       debouncer.run(() {
         animationController.reverse();
         controller?.animateTo(0,
             duration: durationAnimation, curve: curve ?? Curves.easeInOut);
       });
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark,
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarBrightness: expandedBrightness,
+        statusBarIconBrightness: expandedBrightness,
       ));
     } else if (shrinkOffset > maxExtent / 2 &&
         shrinkOffset <= maxExtent - (minExtent)) {
@@ -143,11 +140,9 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
         controller?.animateTo(maxExtent - (minExtent),
             duration: durationAnimation, curve: curve ?? Curves.easeInOut);
       });
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        // statusBarBrightness: Brightness.light,
-        // statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark,
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarBrightness: collapsedBrightness,
+        statusBarIconBrightness: collapsedBrightness,
       ));
     }
   }
