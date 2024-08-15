@@ -4,5 +4,5 @@
 
 ## 开始
  
-![上往下出现动画](./README/images/dtu.gif#pic_center =128x128) 
+![上往下出现动画](./README/images/dtu.gif) 
 ![左往右出现动画](./README/images/ltr.gif) 
