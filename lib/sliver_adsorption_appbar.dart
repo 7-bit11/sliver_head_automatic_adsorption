@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:sliver_head_automatic_adsorption/animation/animation_enum.dart';
 import 'package:sliver_head_automatic_adsorption/sliver_adsorption_header.dart';
 
-class SliverAdsorption extends StatefulWidget {
+class SliverAdsorptionApbbar extends StatefulWidget {
   /// 滚动控制器
   final ScrollController controller;
 
@@ -63,7 +63,7 @@ class SliverAdsorption extends StatefulWidget {
   final Brightness? expandedBrightness;
 
   /// 构造函数
-  SliverAdsorption({
+  SliverAdsorptionApbbar({
     super.key,
     this.pinned = true,
     this.expandedColors,
@@ -90,10 +90,10 @@ class SliverAdsorption extends StatefulWidget {
                 slivers.every((widget) => widget is SliverConstraints)),
             'slivers list child must be a of RenderObjectWidgets||RenderSliver||SliverConstraints ');
   @override
-  State<SliverAdsorption> createState() => _SliverAdsorptionState();
+  State<SliverAdsorptionApbbar> createState() => _SliverAdsorptionApbbarState();
 }
 
-class _SliverAdsorptionState extends State<SliverAdsorption>
+class _SliverAdsorptionApbbarState extends State<SliverAdsorptionApbbar>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<dynamic> _animation;

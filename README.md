@@ -14,7 +14,7 @@ This is a custom sliver component that can automatically attach to the top
 
 ``` dart
 ScrollController controller = ScrollController();
-SliverAdsorption(
+SliverAdsorptionAppbar(
           controller: controller,
           collapsedColors: Colors.yellow,
           slivers: [
@@ -44,7 +44,7 @@ SliverAdsorption(
 ``` dart
  ScrollController controller = ScrollController();
 
- SliverAdsorption(
+ SliverAdsorptionAppbar(
             controller: controller,
             collapsedColors: Colors.white,
             collapsedHeight: 90,

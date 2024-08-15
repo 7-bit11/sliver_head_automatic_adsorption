@@ -14,7 +14,7 @@ class _SliverExampleState extends State<SliverExample> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: SliverAdsorption(
+        body: SliverAdsorptionApbbar(
             controller: controller,
             collapsedColors: Colors.white,
             collapsedHeight: 90,
