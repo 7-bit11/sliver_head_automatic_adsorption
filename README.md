@@ -4,4 +4,5 @@
 
 ## 开始
 
-![图片说明](.\Images\test.jpg) 
+![上往下出现动画](./README/images/dtua.avi) 
+![左往右出现动画](./README/images/ltra.avi) 
