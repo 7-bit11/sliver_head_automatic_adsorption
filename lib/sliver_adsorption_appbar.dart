@@ -52,7 +52,15 @@ class SliverAdsorption extends StatefulWidget {
   /// 动画曲线
   final Curve? curve;
 
+  /// 动画枚举类型
+  /// 默认 [AnimationEnum.upToDown]
   final AnimationEnum animationEnum;
+
+  /// 折叠后的状态栏颜色
+  final Brightness? collapsedBrightness;
+
+  /// 展开后的状态栏颜色
+  final Brightness? expandedBrightness;
 
   /// 构造函数
   SliverAdsorption({
@@ -70,6 +78,8 @@ class SliverAdsorption extends StatefulWidget {
     this.animationEnum = AnimationEnum.upToDown,
     this.durationAnimation = const Duration(milliseconds: 300),
     this.updateBackgroundColor,
+    this.collapsedBrightness,
+    this.expandedBrightness,
     required this.controller,
     required this.slivers,
     required this.expandedWidget,
@@ -99,7 +109,6 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
   /// 初始化动画【根据枚举类型初始化动画】
   /// [AnimationEnum]
   _initAnimation(AnimationEnum aEnum) {
-    print("$aEnum =====================");
     switch (aEnum) {
       case AnimationEnum.fadeIn:
         _animation = Tween<double>(
@@ -170,6 +179,8 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
             collapsedColors: widget.collapsedColors,
             updateBackgroundColor: widget.updateBackgroundColor,
             expandedWidget: widget.expandedWidget,
+            collapsedBrightness: widget.collapsedBrightness,
+            expandedBrightness: widget.expandedBrightness,
           ),
         ),
         for (var sliver in widget.slivers) sliver,

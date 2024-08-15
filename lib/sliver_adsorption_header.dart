@@ -61,6 +61,13 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
 
   /// 动画控制器
   final AnimationController animationController;
+
+  /// 折叠后的状态栏颜色
+  final Brightness? collapsedBrightness;
+
+  /// 展开后的状态栏颜色
+  final Brightness? expandedBrightness;
+
   SliverHeaderAutomaticDelegate(
       {this.controller,
       this.collapsedWidget,
@@ -72,6 +79,8 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       required this.animationController,
       this.curve = Curves.ease,
       this.durationAnimation = const Duration(milliseconds: 300),
+      this.collapsedBrightness = Brightness.dark,
+      this.expandedBrightness = Brightness.dark,
       required this.collapsedHeight,
       required this.expandedHeight,
       required this.paddingTop,
