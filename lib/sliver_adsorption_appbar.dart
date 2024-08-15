@@ -138,6 +138,7 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
   Widget? _getAnimationWidget() {
     /// 初始化动画
     _initAnimation(widget.animationEnum);
+    if (widget.collapsedWidget == null) return null;
     switch (widget.animationEnum) {
       case AnimationEnum.fadeIn:
         return FadeTransition(

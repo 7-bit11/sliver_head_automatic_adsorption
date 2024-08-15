@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sliver_head_automatic_adsorption/animation/animation_enum.dart';
 import 'package:sliver_head_automatic_adsorption/sliver_adsorption_appbar.dart';
 
 class SliverExample extends StatefulWidget {

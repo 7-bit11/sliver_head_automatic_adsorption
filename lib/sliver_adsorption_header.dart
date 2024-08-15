@@ -110,7 +110,6 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
       title: Text(
         defaultCollapsedTitle ?? "Appbar",
         style: TextStyle(
-          fontSize: 10,
           fontWeight: FontWeight.w500,
           color: _makeStickyHeaderTextColor(shrinkOffset, true),
         ),
