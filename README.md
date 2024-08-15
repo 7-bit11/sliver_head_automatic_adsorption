@@ -4,11 +4,19 @@ This is a custom sliver component that can automatically attach to the top
 
 ## Start
 
+## Table of contents
+
+- [Simple Use](#simple)
+- [Example Code](#example)
+- [Import Use](#import)
+
 ### Example
 
 [sliver_example](./example/lib/sliver_example.dart)
 
 <img src="./README/images/dtu.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/ltr.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/simpleuse.gif" width = 230 height = 500  alt="Alternate text"/>
+
+<a id="simple"></a>
 
 ### Simple Use
 
@@ -38,6 +46,8 @@ SliverAdsorptionAppbar(
           expandedWidget: Container(),
         )
 ```
+
+<a id="example"></a>
 
 #### Example Code
 
@@ -177,3 +187,15 @@ SliverAdsorptionAppbar(
             ])
 
 ```
+
+<a id="import"></a>
+
+#### How to import
+
+pubspec.yaml add dependency
+
+dependencies:
+  sliver_head_automatic_adsorption:
+    git:
+       url: <https://github.com/7-bit-zhang/sliver_head_automatic_adsorption.git>
+       ref: "1.0.0"
