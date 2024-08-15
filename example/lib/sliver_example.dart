@@ -19,7 +19,7 @@ class _SliverExampleState extends State<SliverExample> {
             controller: controller,
             collapsedColors: Colors.white,
             collapsedHeight: 90,
-            animationEnum: AnimationEnum.leftToRight,
+            //animationEnum: AnimationEnum.leftToRight,
             expandedWidget: Container(
               padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               color: Colors.white,
