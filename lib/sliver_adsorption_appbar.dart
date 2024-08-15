@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:sliver_head_automatic_adsorption/animation/animation_enum.dart';
 import 'package:sliver_head_automatic_adsorption/sliver_adsorption_header.dart';
 
 class SliverAdsorption extends StatefulWidget {
@@ -51,6 +52,9 @@ class SliverAdsorption extends StatefulWidget {
   /// 动画曲线
   final Curve? curve;
 
+  final AnimationEnum animationEnum;
+
+  /// 构造函数
   SliverAdsorption({
     super.key,
     this.pinned = true,
@@ -63,8 +67,9 @@ class SliverAdsorption extends StatefulWidget {
     this.curve,
     this.collapsedHeight = 60,
     this.expandedHeight = 400,
-    this.updateBackgroundColor,
+    this.animationEnum = AnimationEnum.upToDown,
     this.durationAnimation = const Duration(milliseconds: 300),
+    this.updateBackgroundColor,
     required this.controller,
     required this.slivers,
     required this.expandedWidget,
@@ -86,14 +91,44 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: widget.durationAnimation,
       vsync: this,
     );
-    _animation = Tween<Offset>(
-      begin: const Offset(0, -2), // 控制动画起始位置 (屏幕下方)
-      end: const Offset(0, 0), // 控制动画结束位置 (屏幕中间)
-    ).animate(CurvedAnimation(
-        parent: _controller, curve: widget.curve ?? Curves.easeInOut));
+
+    /// 初始化动画
+    _initAnimation(widget.animationEnum);
+  }
+
+  /// 初始化动画【根据枚举类型初始化动画】
+  /// [AnimationEnum]
+  _initAnimation(AnimationEnum aEnum) {
+    switch (aEnum) {
+      case AnimationEnum.fadeIn:
+        return;
+      case AnimationEnum.upToDown:
+        _animation = Tween<Offset>(
+          begin: const Offset(0, -2), // 控制动画起始位置 (屏幕下方)
+          end: const Offset(0, 0), // 控制动画结束位置 (屏幕中间)
+        ).animate(CurvedAnimation(
+            parent: _controller, curve: widget.curve ?? Curves.easeInOut));
+        return;
+      case AnimationEnum.leftToRight:
+        return;
+    }
+  }
+
+  /// 动画组件
+  Widget? _getAnimationWidget() {
+    switch (widget.animationEnum) {
+      case AnimationEnum.fadeIn:
+        return null;
+      case AnimationEnum.upToDown:
+        return SlideTransition(
+            position: _animation as Animation<Offset>,
+            child: widget.collapsedWidget);
+      case AnimationEnum.leftToRight:
+        return null;
+    }
   }
 
   @override
@@ -114,9 +149,7 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
             controller: widget.controller,
             collapsedHeight: widget.collapsedHeight,
             animationController: _controller,
-            collapsedWidget: SlideTransition(
-                position: _animation as Animation<Offset>,
-                child: widget.collapsedWidget),
+            collapsedWidget: _getAnimationWidget(),
             expandedHeight: widget.expandedHeight,
             paddingTop: widget.paddingTop ?? MediaQuery.of(context).padding.top,
             defaultCollapsedColor: widget.defaultCollapsedColor,
