@@ -8,7 +8,7 @@ This is a custom sliver component that can automatically attach to the top
 
 [sliver_example](./example/lib/sliver_example.dart)
 
-<img src="./README/images/dtu.gif" width = 250 height = 500  alt="Alternate text"/> <img src="./README/images/ltr.gif" width = 250 height = 500  alt="Alternate text"/>
+<img src="./README/images/dtu.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/ltr.gif" width = 230 height = 500  alt="Alternate text"/>
 
 ``` dart
  ScrollController controller = ScrollController();
@@ -149,7 +149,7 @@ This is a custom sliver component that can automatically attach to the top
 
 ### Simple Use
 
-<img src="./README/images/simpleuse.gif" width = 250 height = 500  alt="Alternate text"/>
+<img src="./README/images/simpleuse.gif" width = 230 height = 500  alt="Alternate text"/>
 
 #### Demo Code
 
