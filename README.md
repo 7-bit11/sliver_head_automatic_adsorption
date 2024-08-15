@@ -8,7 +8,38 @@ This is a custom sliver component that can automatically attach to the top
 
 [sliver_example](./example/lib/sliver_example.dart)
 
-<img src="./README/images/dtu.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/ltr.gif" width = 230 height = 500  alt="Alternate text"/>
+<img src="./README/images/dtu.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/ltr.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./README/images/simpleuse.gif" width = 230 height = 500  alt="Alternate text"/>
+
+### Simple Use
+
+``` dart
+ScrollController controller = ScrollController();
+SliverAdsorption(
+          controller: controller,
+          collapsedColors: Colors.yellow,
+          slivers: [
+            SliverList.builder(
+              itemBuilder: (c, i) {
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  color: Colors.blue,
+                  height: 100,
+                  child: Center(
+                    child: Text(
+                      "$i",
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                );
+              },
+              itemCount: 50,
+            ),
+          ],
+          expandedWidget: Container(),
+        )
+```
+
+#### Example Code
 
 ``` dart
  ScrollController controller = ScrollController();
@@ -145,37 +176,4 @@ This is a custom sliver component that can automatically attach to the top
               const SliverToBoxAdapter(),
             ])
 
-```
-
-### Simple Use
-
-<img src="./README/images/simpleuse.gif" width = 230 height = 500  alt="Alternate text"/>
-
-#### Demo Code
-
-``` dart
-ScrollController controller = ScrollController();
-SliverAdsorption(
-          controller: controller,
-          collapsedColors: Colors.yellow,
-          slivers: [
-            SliverList.builder(
-              itemBuilder: (c, i) {
-                return Container(
-                  margin: const EdgeInsets.only(bottom: 10),
-                  color: Colors.blue,
-                  height: 100,
-                  child: Center(
-                    child: Text(
-                      "$i",
-                      style: const TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                );
-              },
-              itemCount: 50,
-            ),
-          ],
-          expandedWidget: Container(),
-        )
 ```
