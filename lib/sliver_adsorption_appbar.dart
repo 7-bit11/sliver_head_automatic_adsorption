@@ -94,14 +94,12 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
       duration: widget.durationAnimation,
       vsync: this,
     );
-
-    /// 初始化动画
-    _initAnimation(widget.animationEnum);
   }
 
   /// 初始化动画【根据枚举类型初始化动画】
   /// [AnimationEnum]
   _initAnimation(AnimationEnum aEnum) {
+    print("$aEnum =====================");
     switch (aEnum) {
       case AnimationEnum.fadeIn:
         _animation = Tween<double>(
@@ -118,12 +116,19 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
             parent: _controller, curve: widget.curve ?? Curves.easeInOut));
         return;
       case AnimationEnum.leftToRight:
+        _animation = Tween<Offset>(
+          begin: const Offset(-2, 0), // 控制动画起始位置 (屏幕左)
+          end: const Offset(0, 0), // 控制动画结束位置 (屏幕中间)
+        ).animate(CurvedAnimation(
+            parent: _controller, curve: widget.curve ?? Curves.easeInOut));
         return;
     }
   }
 
   /// 动画组件
   Widget? _getAnimationWidget() {
+    /// 初始化动画
+    _initAnimation(widget.animationEnum);
     switch (widget.animationEnum) {
       case AnimationEnum.fadeIn:
         return FadeTransition(
@@ -134,7 +139,9 @@ class _SliverAdsorptionState extends State<SliverAdsorption>
             position: _animation as Animation<Offset>,
             child: widget.collapsedWidget);
       case AnimationEnum.leftToRight:
-        return null;
+        return SlideTransition(
+            position: _animation as Animation<Offset>,
+            child: widget.collapsedWidget);
     }
   }
 

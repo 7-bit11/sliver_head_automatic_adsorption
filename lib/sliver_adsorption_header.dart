@@ -127,7 +127,7 @@ class SliverHeaderAutomaticDelegate extends SliverPersistentHeaderDelegate {
     } else if (shrinkOffset > maxExtent / 2 &&
         shrinkOffset <= maxExtent - (minExtent)) {
       debouncer.run(() {
-        if ((shrinkOffset + minExtent + 20) >= maxExtent) {
+        if ((shrinkOffset + minExtent + 10) >= maxExtent) {
           animationController.forward();
           return;
         }

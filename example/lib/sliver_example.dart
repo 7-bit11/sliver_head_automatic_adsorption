@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sliver_head_automatic_adsorption/animation/animation_enum.dart';
 import 'package:sliver_head_automatic_adsorption/sliver_adsorption_appbar.dart';
 
 class SliverExample extends StatefulWidget {
@@ -18,6 +19,7 @@ class _SliverExampleState extends State<SliverExample> {
             controller: controller,
             collapsedColors: Colors.white,
             collapsedHeight: 90,
+            animationEnum: AnimationEnum.leftToRight,
             expandedWidget: Container(
               padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               color: Colors.white,
