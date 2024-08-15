@@ -3,6 +3,6 @@
 这个是一个自定义的sliver组件，可以自动吸附到顶部
 
 ## 开始
- 
-![上往下出现动画](./README/images/dtu.gif) 
-![左往右出现动画](./README/images/ltr.gif) 
+<img src="./README/images/dtu.gif" width = 300 height = 200>
+<!-- ![上往下出现动画](./README/images/dtu.gif) 
+![左往右出现动画](./README/images/ltr.gif)  -->
