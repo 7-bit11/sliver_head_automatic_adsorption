@@ -193,11 +193,12 @@ SliverAdsorptionAppbar(
 #### How to import
 
 pubspec.yaml add dependency
+thisversion: 1.0.0
 
 ``` yaml
 dependencies:
   sliver_head_automatic_adsorption:
     git:
        url: https://github.com/7-bit-zhang/sliver_head_automatic_adsorption.git
-       ref: "1.0.0"
+       ref: late version
 ```
