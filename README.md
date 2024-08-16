@@ -193,7 +193,7 @@ SliverAdsorptionAppbar(
 ### How to import
 
 pubspec.yaml add dependency
-thisversion: 1.0.0
+thisversion: 1.0.1
 
 ``` yaml
 dependencies:
