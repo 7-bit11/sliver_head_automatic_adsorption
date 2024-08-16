@@ -14,7 +14,7 @@ This is a custom sliver component that can automatically attach to the top
 
 [sliver_example](./example/lib/sliver_example.dart)
 
-<img src="./example/README/images/dtu.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./example/README/images/ltr.gif" width = 230 height = 500  alt="Alternate text"/> <img src="./example/README/images/simpleuse.gif" width = 230 height = 500  alt="Alternate text"/>
+<img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/2405ddd22f0844eea8d44b7e76e6ad01~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?rk3s=f64ab15b&x-expires=1724318770&x-signature=H57kOW7N6zaO26zcRirsDavdT7k%3D" width = 230 height = 500  alt="Alternate text"/> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a81f472b1ecf4e6585ebdf9ceb618470~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?rk3s=f64ab15b&x-expires=1724318770&x-signature=71jEzNd4AoOazHNZUB1Ztre0S2o%3D" width = 230 height = 500  alt="Alternate text"/> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/b477c9c16c3744ef801ace835064068f~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?rk3s=f64ab15b&x-expires=1724318770&x-signature=jdwjNfgBoDOP74CKikYLQkzLuvw%3D" width = 230 height = 500  alt="Alternate text"/>
 
 <a id="simple"></a>
 
