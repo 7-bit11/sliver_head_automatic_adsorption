@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:sliver_head_automatic_adsorption/animation/animation_enum.dart';
-import 'package:sliver_head_automatic_adsorption/sliver_adsorption_header.dart';
+import 'package:sliver_head_automatic_adsorption/src/animation/animation_enum.dart';
+import 'package:sliver_head_automatic_adsorption/src/sliver_adsorption/sliver_adsorption_header.dart';
 
 class SliverAdsorptionApbbar extends StatefulWidget {
   /// 滚动控制器

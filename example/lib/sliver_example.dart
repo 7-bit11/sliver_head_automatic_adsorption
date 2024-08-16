@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sliver_head_automatic_adsorption/sliver_adsorption_appbar.dart';
+import 'package:sliver_head_automatic_adsorption/sliver_head_automatic_adsorption.dart';
 
 class SliverExample extends StatefulWidget {
   const SliverExample({super.key});
