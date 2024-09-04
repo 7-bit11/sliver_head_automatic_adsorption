@@ -1,6 +1,6 @@
 name: sliver_head_automatic_adsorption
 description: "This is a custom sliver component that can automatically attach to the top"
-version: 1.0.5
+version: 1.0.6
 repository: https://github.com/7-bit-zhang/sliver_head_automatic_adsorption
 issue_tracker: https://github.com/7-bit-zhang/sliver_head_automatic_adsorption/issues
 
