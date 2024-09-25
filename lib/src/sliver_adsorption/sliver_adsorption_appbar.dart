@@ -83,13 +83,14 @@ class SliverAdsorptionAppbar extends StatefulWidget {
     required this.controller,
     required this.slivers,
     required this.expandedWidget,
-  }) : assert(
-            slivers.every((widget) =>
-                    widget is RenderObjectWidget ||
-                    slivers.every((widget) => widget is RenderSliver) ||
-                    slivers.every((widget) => widget is SliverConstraints)) ||
-                slivers.every((widget) => widget is SliverFillRemaining),
-            'slivers list child must be a of RenderObjectWidgets||RenderSliver||SliverConstraints ');
+  });
+  // : assert(
+  //           slivers.every((widget) =>
+  //                   widget is RenderObjectWidget ||
+  //                   slivers.every((widget) => widget is RenderSliver) ||
+  //                   slivers.every((widget) => widget is SliverConstraints)) ||
+  //               slivers.every((widget) => widget is SliverFillRemaining),
+  //           'slivers list child must be a of RenderObjectWidgets||RenderSliver||SliverConstraints ')
   @override
   State<SliverAdsorptionAppbar> createState() => _SliverAdsorptionAppbarState();
 }
